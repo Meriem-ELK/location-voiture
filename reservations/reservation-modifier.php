@@ -126,11 +126,14 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                 <div class="form-group">
                     <label for="vehicule_id">Véhicule</label>
                     <select id="vehicule_id" name="vehicule_id" required>
+                        
                         <option value="">Sélectionner un véhicule</option>
+                            <?php foreach ($vehicules as $vehicule): ?>
                             <option value="<?= $vehicule['id'] ?>" <?= ($vehicule['id'] == $reservation['vehicule_id']) ? 'selected' : '' ?>>
                                 <?= $vehicule['marque'] . ' ' . $vehicule['modele'] . ' - ' . $vehicule['immatriculation'] ?> 
                                 (<?= $vehicule['categorie'] ?>, <?= $vehicule['tarif_journalier'] ?>€/jour)
                             </option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 

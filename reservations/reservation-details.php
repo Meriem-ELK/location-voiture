@@ -15,12 +15,10 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     
     // Vérifier si la réservation existe
     if (!$reservation) {
-        // Rediriger vers la page des réservations si la réservation n'existe pas
         header('Location: ../reservations.php');
         exit;
     }
 } else {
-    // Rediriger vers la page des réservations si aucun ID n'est fourni
     header('Location: ../reservations.php');
     exit;
 }
