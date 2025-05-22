@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+/* Général */
+@import url("base/base.css");
+@import url("base/general.css");
+
+/* Composant */
+@import url("composant/bouton.css");
+
+/* Template */
+@import url("template/header.css");
+@import url("template/nav.css");
+@import url("template/form.css");
+@import url("template/footer.css");

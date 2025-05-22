@@ -1,0 +1,31 @@
+/*------------ Menu -----------------*/
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-weight: 500;
+  color: #555;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+nav a i {
+  font-size: 1rem;
+}
+
+nav a:hover {
+  color: #003366;
+  background-color: rgba(0, 51, 102, 0.05);
+}
+
+nav a.active {
+  color: #003366;
+  border-bottom: 2px solid #003366;
+}
