@@ -1,8 +1,6 @@
 <?php
-// Inclure la classe Vehicule
 require_once('../classes/Vehicule.php');
 
-// Créer une instance de Vehicule
 $vehiculeObj = new Vehicule();
 
 // Vérifier si un ID a été passé dans l'URL
@@ -15,12 +13,10 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     
     // Vérifier si le véhicule existe
     if (!$vehicule) {
-        // Rediriger vers la page des véhicules si le véhicule n'existe pas
         header('Location: ../vehicules.php');
         exit;
     }
 } else {
-    // Rediriger vers la page des véhicules si aucun ID n'est fourni
     header('Location: ../vehicules.php');
     exit;
 }

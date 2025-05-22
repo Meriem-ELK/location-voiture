@@ -1,8 +1,6 @@
 <?php
-// Inclure la classe Client
 require_once('../classes/Client.php');
 
-// Créer une instance de Client
 $clientObj = new Client();
 
 // Vérifier si un ID a été passé dans l'URL
@@ -15,12 +13,10 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     
     // Vérifier si le client existe
     if (!$client) {
-        // Rediriger vers la page des clients si le client n'existe pas
         header('Location: clients.php');
         exit;
     }
 } else {
-    // Rediriger vers la page des clients si aucun ID n'est fourni
     header('Location: clients.php');
     exit;
 }

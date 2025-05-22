@@ -1,8 +1,7 @@
 <?php
-// Inclure la classe Client
+
 require_once('../classes/Client.php');
 
-// Créer une instance de Client
 $clientObj = new Client();
 $message = '';
 
@@ -34,7 +33,6 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         
         // Mettre à jour le client
         if ($clientObj->updateClient($client_data, $id)) {
-            // Rediriger vers la page de détails après la mise à jour
             header('Location: client-details.php?id=' . $id);
             exit;
         } else {
@@ -42,7 +40,6 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         }
     }
 } else {
-    // Rediriger vers la liste des clients si aucun ID n'est fourni
     header('Location: clients.php');
     exit;
 }

@@ -1,7 +1,6 @@
 <?php
 require_once('../classes/Vehicule.php');
 
-// Créer une instance de Vehicule
 $vehiculeObj = new Vehicule();
 $message = '';
 

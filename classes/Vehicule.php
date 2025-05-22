@@ -54,12 +54,6 @@ class Vehicule {
         return $this->crud->select('categories', 'nom', 'asc');
     }
 
-    // // Changer le statut de disponibilité d'un véhicule
-    // public function changeDisponibilite($id, $disponible) {
-    //     $data = ['disponible' => $disponible];
-    //     return $this->crud->update('vehicules', $data, $id);
-    // }
-
     // Vérifier si un véhicule est réservé (pour éviter la suppression)
     public function isVehiculeReserve($id) {
         $sql = "SELECT COUNT(*) FROM reservations WHERE vehicule_id = :id AND statut IN ('en attente', 'confirmée')";

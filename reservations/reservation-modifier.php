@@ -1,8 +1,6 @@
 <?php
-// Inclure la classe Reservation
 require_once('../classes/Reservation.php');
 
-// Créer une instance de Reservation
 $reservationObj = new Reservation();
 $message = '';
 
@@ -57,7 +55,6 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                 
                 // Mettre à jour la réservation
                 if ($reservationObj->updateReservation($reservation_data, $id)) {
-                    // Rediriger vers la page de détails après la mise à jour
                     header('Location: reservation-details.php?id=' . $id);
                     exit;
                 } else {
@@ -67,7 +64,6 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         }
     }
 } else {
-    // Rediriger vers la liste des réservations si aucun ID n'est fourni
     header('Location: ../reservations.php');
     exit;
 }
@@ -131,33 +127,10 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                     <label for="vehicule_id">Véhicule</label>
                     <select id="vehicule_id" name="vehicule_id" required>
                         <option value="">Sélectionner un véhicule</option>
-                        <?php 
-                        // Ajouter le véhicule actuel s'il n'est plus disponible mais utilisé dans cette réservation
-                        $vehicule_ajoutee = false;
-                        foreach ($vehicules as $vehicule): 
-                            if ($vehicule['id'] == $reservation['vehicule_id']) {
-                                $vehicule_ajoutee = true;
-                            }
-                        ?>
                             <option value="<?= $vehicule['id'] ?>" <?= ($vehicule['id'] == $reservation['vehicule_id']) ? 'selected' : '' ?>>
                                 <?= $vehicule['marque'] . ' ' . $vehicule['modele'] . ' - ' . $vehicule['immatriculation'] ?> 
                                 (<?= $vehicule['categorie'] ?>, <?= $vehicule['tarif_journalier'] ?>€/jour)
                             </option>
-                        <?php endforeach; 
-                        
-                        // Si le véhicule de la réservation n'est pas dans la liste (pas disponible), l'ajouter
-                        if (!$vehicule_ajoutee) {
-                            // Récupérer les détails de la réservation avec les informations du véhicule
-                            $reservation_details = $reservationObj->getReservationDetails($id);
-                            
-                            if ($reservation_details) {
-                                echo '<option value="' . $reservation['vehicule_id'] . '" selected>';
-                                echo $reservation_details['marque'] . ' ' . $reservation_details['modele'] . ' - ' . $reservation_details['immatriculation'];
-                                echo ' (' . $reservation_details['categorie'] . ', ' . $reservation_details['tarif_journalier'] . '€/jour)';
-                                echo '</option>';
-                            }
-                        }
-                        ?>
                     </select>
                 </div>
                 
